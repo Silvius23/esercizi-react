@@ -3,13 +3,12 @@
 var HelloWord = () => {
     var pianeta = 'Terra';
     var mercurio = 'Mercurio'
-    const testoRosso = {color:"red"}
     return (
-        <div style = {{color:"red"}}>
-            <p>Ciao pianeta {pianeta}</p>
-            <p>come te la passi su {mercurio} ?</p>
+        <div>
+            <p className="background-color-red">Ciao pianeta {pianeta}</p>
+            <p className="background-color-cyan">come te la passi su {mercurio} ?</p>
         </div>
-    )
+    )           
 }
 
  // qua invece uso l'stanza reactDOM con il metodo render che serve per visualizzare e ad assegnare al file html il mio componente react
