@@ -42,7 +42,7 @@
 
 // ReactDOM.render(<HelloWord config ={configurazione} carota = {'genoveffa'} />, document.getElementById('root'))
 
-const identita = { nome : 'Gigino', cognome :'Mangiafico', eta:81}
+const identita = { nome : 'Mara', cognome :'Maionchi', eta:81}
 var musica = 'metal';
 
 
@@ -51,9 +51,12 @@ class Person extends React.Component{
         super(attributi)
 
         //con this.state dichiaro una proprietà mutevole a differenza delle altre proprietà
-        this.state ={peso : 99}
+        this.state ={peso : 75}
     }
-
+    cambiaPeso(event){
+        this.setState({peso : 200})
+        event.preventDefault()
+    }
     render(){
         return(
         <div>
@@ -62,7 +65,7 @@ class Person extends React.Component{
             <h2>{this.props.anagrafica.cognome}</h2>
             <h2>Anni {this.props.anagrafica.eta}</h2>
             <p>Ascolta {this.props.genere}</p>
-            
+
             {/* qua reinderizzo lo stato di questo componente mutevole */}
             <h2>pesa chili {this.state.peso}</h2>
             <hr />
