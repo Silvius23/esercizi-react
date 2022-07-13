@@ -54,7 +54,6 @@ class Person extends React.Component{
         this.state ={peso : 99}
     }
 
-    
     render(){
         return(
         <div>
@@ -63,7 +62,7 @@ class Person extends React.Component{
             <h2>{this.props.anagrafica.cognome}</h2>
             <h2>Anni {this.props.anagrafica.eta}</h2>
             <p>Ascolta {this.props.genere}</p>
-
+            
             {/* qua reinderizzo lo stato di questo componente mutevole */}
             <h2>pesa chili {this.state.peso}</h2>
             <hr />
