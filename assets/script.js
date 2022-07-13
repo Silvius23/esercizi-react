@@ -46,31 +46,49 @@ const identita = { nome : 'Mara', cognome :'Maionchi', eta:81}
 var musica = 'metal';
 
 
+const ImgProfile = function(attributi){
+    return(
+    <div className="profile-component">
+        <img src="/assets/img/maionchi.png" title="foto profilo" alt="foto profilo" width={attributi.configImg.larghezza}/>
+    </div>
+    );
+}
+
 class Person extends React.Component{
     constructor(attributi){
         super(attributi)
-
         //con this.state dichiaro una proprietà mutevole a differenza delle altre proprietà
-        this.state ={peso : 75}
+        this.state ={peso : 75 , occupazione: "agitatrice della masse"}
+        this.inputRef = React.createRef();
+        this.inputProfessione = React.createRef();
+
     }
-    cambiaPeso(event){
-        this.setState({peso : 200})
+    inviaForm(event){
+        var valore = this.inputRef.current.value
+        var lavoro = this.inputProfessione.current.value
+        this.setState({peso : valore, occupazione:lavoro})
         event.preventDefault()
     }
+
     render(){
+        const nomeCognome = this.props.anagrafica.nome +" "+ this.props.anagrafica.cognome;
         return(
-        <div>
+        <div className="persona-component">
+            <ImgProfile configImg={{titolo: nomeCognome, larghezza: '400'}}/>
             <h1>Anagrafica Persona</h1>
             <h2>{this.props.anagrafica.nome}</h2>
             <h2>{this.props.anagrafica.cognome}</h2>
             <h2>Anni {this.props.anagrafica.eta}</h2>
             <p>Ascolta {this.props.genere}</p>
-
             {/* qua reinderizzo lo stato di questo componente mutevole */}
-            <h2>pesa chili {this.state.peso}</h2>
+            <h2>pesa kili {this.state.peso}</h2>
+            <p>Professione {this.state.occupazione}</p>
             <hr />
-            <form onSubmit={this.cambiaPeso.bind(this)}>
-                <input type="text" />
+            <form onSubmit={this.inviaForm.bind(this)}>
+                <label>Peso</label>
+                <input type="text" ref={this.inputRef}/><br />
+                <label>Professione</label>
+                <input type="text" ref={this.inputProfessione}/><br />
                 <button type="submit">Click me</button>
             </form>
         </div>
